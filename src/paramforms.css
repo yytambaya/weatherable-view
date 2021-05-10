@@ -1,0 +1,17 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+#input{
+    width: 300px;
+    height: 50px;
+}
+#submit{
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border-color: none;
+    background-color: black;
+    color: white;
+}

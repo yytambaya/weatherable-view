@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import './paramforms';
+import ConditionalForm from './paramforms';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Weatherable</p>
       </header>
+      <div class="main">
+        <div class="info">
+          <p>This app checks the weather condition of a city you want to visit</p>
+          <p>The temperature, the wind speed and rainfall condition</p>  
+        </div> 
+        <ConditionalForm/>
+      </div> 
     </div>
   );
 }
