@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Alert, Form, Button, Card } from 'react-bootstrap';
 import  './paramforms.css';
 class ConditionalForm extends React.Component{
     
@@ -23,38 +22,30 @@ class ConditionalForm extends React.Component{
 
     handleForm = (e) => {
         e.preventDefault();
-        /*alert("Gud")*/
-        //alert(e.target.value);
         if(e.target.value != ""){
-            //alert("me");
             var city = this.state.city;
             this.getWeatherConditions(city);
-            //this.setState({conditions: condition});
-        }else{
-            //alert("No data")
-            //console.log("Zaria");
         }
         
     }
 
     getWeatherConditions = (city) => {
-        axios.get('http://localhost:5000/conditions',
+        axios.get('https://weatherableapp.herokuapp.com/conditions',
         {params: {city: city}}   
         )
         .then(res => {
-            //console.log(res);
-            //alert(JSON.stringify(res));
             if(res.data.error == ""){
-                //alert(JSON.stringify(res.data.result))
                 let temp = JSON.stringify(res.data.result.temp)
                 let wind = JSON.stringify(res.data.result.wind)
                 let rainfall = JSON.stringify(res.data.result.rainfall)
                 this.setState({temp: temp, wind:wind, rainfall:rainfall});
             }else{
-                //alert("Error")
-                this.setState({temp: "Something went wrong"});
+                this.setState({error: "Something went wrong"});
+                this.setState({temp: ""});
+                this.setState({wind: ""});
+                this.setState({rainfall: ""});
+                
             }
-            //this.setState({conditions: res.data});
         })
         .catch( err => {
             //alert("Error 2: " + err);
